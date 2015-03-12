@@ -1,0 +1,240 @@
+body {
+    margin: 0;
+    width: 100%;
+    position: absolute;
+}
+
+/* Normalize search input field styles */
+input[type=search] {
+    -webkit-appearance: textfield;
+    font-size: 12px;
+    border: 2px inset #ccc;
+    border-radius: 10px;
+    width: 150px;
+    background: white;
+    padding: 3px;
+    padding-left: 20px;
+    }
+    ::-webkit-search-cancel-button { display: none; }
+
+header, .content {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    padding: 1.75em 5% 0.33em;
+}
+
+header {
+    background: #336E7B; /* MING */
+    border-bottom: 3.4em solid #2C3E50; /* MADISON */
+    height: 5.15em;
+    }
+    header > * {
+        display: block;
+    }
+    header h1 {
+        color: #86E2D5; /* RIPTIDE */
+        font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+        font-weight: bold;
+        font-size: 2em;
+        margin: 0.67em 0;
+        padding: 0;
+    }
+    header nav[role="main"] {
+        height: 3.36em;
+        position: relative;
+        top: 0.53em;
+    }
+
+    nav[role="main"] ul {
+        padding: 0;
+        list-style: none;
+        }
+        nav[role="main"] ul li {
+            display: inline-block;
+            padding: 0.75em 0.5em;
+            font-family: Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-transition: background 300ms ease-in-out;
+               -moz-transition: background 300ms ease-in-out;
+                 -o-transition: background 300ms ease-in-out;
+                    transition: background 300ms ease-in-out;
+            }
+            nav[role="main"] ul li:first-of-type { margin-left: -7px; }
+            nav[role="main"] ul li:last-of-type { float: right; margin-right: 0; padding: 0.75em 0;  }
+            nav[role="main"] li:hover { background: #34495E; /* PICKLED BLUEWOOD */ }
+        nav[role="main"] li a {
+            text-decoration: none;
+            font-size: 1.25em;
+            line-height: 1.5em;
+            color: #E08283; /* NEW YORK PINK */
+            }
+            nav.main li a:visited, nav[role="main"] li a:active { color: #E08283; /* NEW YORK PINK */ }
+            nav[role="main"] li a:hover { text-decoration: none; color: #E26A6A; /* SUNGLO */ }
+    nav[role="main"] #search {
+        width: 25%;
+        }
+        nav[role="main"] #search:hover {
+            background: #2C3E50; /* MADISON */
+        }
+    #search input[type=search] {
+        position: relative;
+        display: block;
+        float: right;
+        padding: 0.3em 0.5em;
+        border-radius: 0.25em;
+        border: none;
+        background: #C8F7C5; /* MADANG */
+        line-height: 1.8em;
+        font-size: 0.85em;
+        color: #E08283; /* NEW YORK PINK */
+        -webkit-transition: background 250ms ease-out,
+                                 width 150ms ease-in-out;
+           -moz-transition: background 250ms ease-out,
+                                 width 150ms ease-in-out;
+             -o-transition: background 250ms ease-out,
+                                 width 150ms ease-in-out;
+                transition: background 250ms ease-out,
+                                 width 150ms ease-in-out;
+        }
+        #search input[type=search]:focus {
+            background: #ECF0F1; /* PORCELAIN */
+            width: 17.7em;
+        }
+
+.content {
+    background: #D2D7D3; /* PUMICE */
+    }
+    article {
+        margin: 1.35em auto;
+        padding: 1.65em 2.5em;
+        border-radius: 10px;
+        border: 5px solid #F5AB35; /* LIGHTNING YELLOW */
+        background: #FDE3A7; /* CAPE HONEY */
+        }
+        article h3 {
+            margin: 0;
+            font-size: 1.45em;
+            font-weight: bold;
+            line-height: 1.75em;
+        }
+        article:nth-of-type(4n+1) h3 { color: #663399; /* REBECCA PURPLE */ }
+        article:nth-of-type(4n+2) h3 { color: #D64541; /* VALENCIA*/ }
+        article:nth-of-type(4n+3) h3 { color: #00B16A; /* JADE */ }
+        article:nth-of-type(4n+4) h3 { color: #F89406; /* CALIFORNIA */ }
+        article .article-actions {
+            float: right;
+            position: relative;
+            width: 2%;
+            top: -3em;
+            display: inline-table;
+            right: -2em;
+        }
+        article p {
+            line-height: 1.5em;
+            margin: -0.75em;
+            padding: 0.75em;
+            width: 97.5%;
+        }
+
+
+/* Icons */
+/* Adapted from http://cssdeck.com/labs/pure-css-icons */
+a.icon {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    margin: 12px;
+    border: 3px solid #F9BF3B; /* SANDSTORM */
+    background-color: #fed;
+    }
+    a.icon:after,
+    a.icon:before {
+        position: absolute;
+        border: 3px solid #F9BF3B; /* SANDSTORM */
+        background: #fed;
+        content: '';
+    }
+    a.icon:hover,
+    a.icon:hover:after,
+    a.icon:hover:before {
+        background-color: #ffe;
+    }
+
+
+/* Heart Icon */
+a.heart {
+    margin-right: 24px;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    z-index: 1;
+    }
+    a.heart:hover {
+        background-color: #F1A9A0; /* WAX FLOWER */
+        border-color: #D2527F; /* CABARET */
+    }
+    a.heart:after {
+        width: 15px;
+        height: 15px;
+        top: -3px;
+        left: 10px;
+        border-radius: 100%;
+        z-index: -1;
+    }
+    a.heart:hover:after {
+        background-color: #F1A9A0; /* WAX FLOWER */
+        border-color: #D2527F; /* CABARET */
+    }
+    a.heart:before {
+        border-left: none;
+        border-top: none;
+        width: 16px;
+        height: 16px;
+        top: 6px;
+        left: 5px;
+        -webkit-transform: rotate(45deg);
+           -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+             -o-transform: rotate(45deg);
+                transform: rotate(45deg);
+    }
+    a.heart:hover:before {
+        background-color: #F1A9A0; /* WAX FLOWER */
+        border-color: #D2527F; /* CABARET */
+    }
+
+/* Comment Icon */
+a.comment {
+    width: 26px;
+    height: 18px;
+    border-radius: 4px;
+    }
+    a.comment:hover {
+        background-color: #66CC99; /* MEDIUM AQUAMARINE */
+        border-color: #1E824C; /* SALEM */
+    }
+    a.comment:after,
+    a.comment:before {
+        width: 0;
+        height: 0;
+        bottom: -14px;
+        left: 10px;
+        border-top: 7px solid #F9BF3B; /* SANDSTORM */
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid transparent;
+        border-left: 7px solid transparent;
+        background: none;
+    }
+    a.comment:before {
+        bottom: -10px;
+        border-top-color: #fed;
+        z-index: 1;
+    }
+    a.comment:hover:after {
+        background: none;
+        border-top-color: #1E824C; /* SALEM */
+    }
+    a.comment:hover:before {
+        background: none;
+        border-top-color: #66CC99; /* MEDIUM AQUAMARINE */
+    }

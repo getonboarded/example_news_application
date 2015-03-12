@@ -1,0 +1,51 @@
+div[data-onboarded-token] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 24px 0;
+    top: 0;
+    background: rgba(189, 195, 199, 0.8);
+}
+
+div[data-onboarded-token] > div[data-onboarded-flow] {
+    margin: 7px auto;
+    position: relative;
+    width: 75%;
+    height: 350px;
+    padding: 21px 92px;
+    background: #1abc9c;
+    border: 2px solid #16a085;
+    border-radius: 16px;
+    color: #336E7B;
+}
+
+div[data-onboarded-flow="Product Tour"] h1 {
+    /*color: #22313F;*/
+    color: #F9BF3B;
+    font-weight: bold;
+    font-size: 2.2em;
+    line-height: 0.95em;
+}
+
+div[data-onboarded-flow="Product Tour"] h2 {
+    font-size: 1.8em;
+    line-height: 0.85em;
+}
+
+div[data-onboarded-flow="Product Tour"] p {
+    font-size: 1.25em;
+    line-height: 0.75em;
+}
+
+div[data-onboarded-flow="Product Tour"] button {
+    padding: 7px 14px;
+    color: #eee;
+    background: #e67e22;
+    border: 1px solid #34495e;
+    border-radius: 5px;
+    }
+    div[data-onboarded-flow="Product Tour"] button:hover,
+    div[data-onboarded-flow="Product Tour"] button:active {
+        color: #fff;
+        background: #d35400;
+    }
