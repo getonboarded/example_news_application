@@ -1,51 +1,82 @@
 div[data-onboarded-token] {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     padding: 24px 0;
     top: 0;
-    background: rgba(189, 195, 199, 0.8);
+    background: rgba(34, 49, 63, 0.85); /* EBONY CLAY, 85% 𝛼 */
+    z-index: 100;
 }
 
 div[data-onboarded-token] > div[data-onboarded-flow] {
-    margin: 7px auto;
+    margin: 0.45em auto;
     position: relative;
-    width: 75%;
-    height: 350px;
-    padding: 21px 92px;
-    background: #1abc9c;
+    top: 9.5em;
+    width: 32.5em;
+    height: auto;
+    padding: 1em 5.5em 2em;
+    background: #C8F7C5; /* MADANG */
     border: 2px solid #16a085;
     border-radius: 16px;
-    color: #336E7B;
+    color: #D24D57; /* CHESTNUT ROSE */
+
+    font-family: 'Franklin Gothic Medium', Arial, sans-serif;
 }
 
 div[data-onboarded-flow="Product Tour"] h1 {
-    /*color: #22313F;*/
-    color: #F9BF3B;
+    color: #2C3E50; /* MADISON */
     font-weight: bold;
     font-size: 2.2em;
     line-height: 0.95em;
 }
 
 div[data-onboarded-flow="Product Tour"] h2 {
-    font-size: 1.8em;
-    line-height: 0.85em;
+    font-size: 1.6em;
+    line-height: 1.25em;
 }
 
 div[data-onboarded-flow="Product Tour"] p {
-    font-size: 1.25em;
-    line-height: 0.75em;
+    font-size: 1.15em;
+    line-height: 1.25em;
 }
 
 div[data-onboarded-flow="Product Tour"] button {
-    padding: 7px 14px;
-    color: #eee;
-    background: #e67e22;
-    border: 1px solid #34495e;
+    padding: 0.7em 1.4em;
+    cursor: pointer;
+    color: #ECF0F1; /* PORCELAIN */
+    background-color: #03A678;
+    border: 0.2em solid #1E824C;
     border-radius: 5px;
+    -webkit-transition: all 200ms ease-in-out;
+       -moz-transition: all 200ms ease-in-out;
+         -o-transition: all 200ms ease-in-out;
+            transition: all 200ms ease-in-out;
     }
     div[data-onboarded-flow="Product Tour"] button:hover,
     div[data-onboarded-flow="Product Tour"] button:active {
-        color: #fff;
-        background: #d35400;
+        color: #D2D7D3; /* PUMICE */
+        background-color: #049372;
+        border-color: #16A085;
+    }
+
+.highlighted {
+    cursor: default;
+    position: absolute;
+    z-index: 1000;
+    -webkit-box-shadow: 2px 2px 24px 8px #E4F1FE; /* ALICE BLUE */
+       -moz-box-shadow: 2px 2px 24px 8px #E4F1FE; /* ALICE BLUE */
+            box-shadow: 2px 2px 24px 8px #E4F1FE; /* ALICE BLUE */
+    }
+    .highlighted a { cursor: default; }
+    .icon.heart.highlighted {
+        position: absolute !important;
+        z-index: 1000 !important;
+        -webkit-box-shadow: 7px 3px 24px 8px #E4F1FE !important; /* ALICE BLUE */
+           -moz-box-shadow: 7px 3px 24px 8px #E4F1FE !important; /* ALICE BLUE */
+                box-shadow: 7px 3px 24px 8px #E4F1FE !important; /* ALICE BLUE */
+    }
+    #search input[type=search].highlighted:focus {
+        cursor: default !important;
+        background: #C8F7C5 !important; /* MADANG */
+        width: 150px !important;
     }
