@@ -6,10 +6,12 @@
     <title>Simple Onboarding Flow</title>
     <link rel="stylesheet" type="text/css" href="css/content.css">
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://d237d8mq680mpf.cloudfront.net/onboarded-js/latest/onboarded-js.min.js"
+            data-style="false"
+            data-flow-auto-start="false">
+    </script>
 
-    <script src="js/jquery-onboarded-0.0.8-2.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/product_tour.css">
     <style type="text/css" media="screen">
         .tour {
@@ -201,35 +203,32 @@
             $("html, body").animate({scrollTop: $el.offset().top - 150}, animationDuration);
         }
 
-        $(document)
+        jQuery(document)
             // When the DOM is 'ready'
             .on( 'ready', function () {
-                var project = Onboarded.load({
-                    api: {
-                        protocol: "http",
-                        host: 'localhost',
-                        port: "3000"
-                    }
-                });
 
                 // Bind a click event handler to the Start Product Tour button
                 $('#start-product-tour').on( 'click', function(e) {
+                    // Retrieve the already instantiated onboarded project.
+                    var project = Onboarded.retrieve();
+
                     // Start the Product Tour flow, skipping the
                     // API check for completed steps.
                     project.startFlow({
                         label: 'Product Tour',
                         skipApiCheck: true
                     });
+
+                    // Bind a click event handler to the render container
+                    project.renderContainer.one( 'click', function(e) {
+                        // If renderContainer element, which we've styled as an overlay,
+                        // was the clicked target, then reset and dismiss the flow.
+                        if ( e.target == $(this).contents().get(0) ) {
+                            project.dismissFlow();
+                        }
+                    });
                 });
 
-                // Bind a click event handler to the render container
-                project.renderContainer.on( 'click', function(e) {
-                    // If renderContainer element, which we've styled as an overlay,
-                    // was the clicked target, then reset and dismiss the flow.
-                    if ( e.target == $(this).contents().get(0) ) {
-                        project.dismissFlow();
-                    }
-                });
             })
 
             // Reset the flow upon dismissal, so that it can be restarted.
@@ -312,6 +311,7 @@
                         break;
                 }
             });
+
     </script>
 </body>
 </html>
