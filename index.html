@@ -122,7 +122,9 @@
     <div data-onboarded-token="PROJECT-TOKEN" style="display: none">
         <div data-onboarded-flow="Product Tour">
 
-            <div data-step="welcome">
+            <div data-step="welcome"
+                 data-scrollTo-selector="body"
+                 data-focus-classname="highlighted">
                 <h1>Welcome to the Awesome News Site!</h1>
                 <h2>The revolutionary new site for reading news online.</h2>
                 <p>Find out about the exciting features that make this site unique:</p>
@@ -133,7 +135,15 @@
                 </button>
             </div>
 
-            <div data-step="search-feature">
+            <div data-step="search-feature"
+                 data-position-selector="#search"
+                 data-position-target="top middle"
+                 data-position-step="top right"
+                 data-position-offset="0px 25px"
+                 data-scrollTo-selector='#search input[type="search"]'
+                 data-scrollTo-offset="-150"
+                 data-focus-selector='#search input[type="search"]'
+                 data-focus-classname="highlighted">
                 <h1>Search For Articles</h1>
                 <h2>Find articles by title, author, or keyword</h2>
 
@@ -143,7 +153,15 @@
                 </button>
             </div>
 
-            <div data-step="collections-feature">
+            <div data-step="collections-feature"
+                 data-position-selector="article:first-of-type .heart"
+                 data-position-target="top left"
+                 data-position-step="top right"
+                 data-position-offset="10px 10px"
+                 data-scrollTo-selector="article:first-of-type .heart"
+                 data-scrollTo-offset="-150"
+                 data-focus-selector='article:first-of-type .heart'
+                 data-focus-classname="highlighted-hovered">
                 <h1>Collect Articles</h1>
                 <h2>Curate your own groups of articles</h2>
                 <p>Save your collections of articles for later reading, or share them with others</p>
@@ -154,7 +172,15 @@
                 </button>
             </div>
 
-            <div data-step="browse-collections-feature">
+            <div data-step="browse-collections-feature"
+                 data-position-selector="nav li:nth-of-type(2)"
+                 data-position-target="bottom middle"
+                 data-position-step="top left"
+                 data-position-offset="-10px -5px"
+                 data-scrollTo-selector="nav li:nth-of-type(2)"
+                 data-scrollTo-offset="-150"
+                 data-focus-selector="nav li:nth-of-type(2)"
+                 data-focus-classname="highlighted">
                 <h1>Browse Collections</h1>
                 <h2>Share your collections of articles. Browse other users' collections.</h2>
                 <p>Review articles in your collections, or discover new articles from other collections.</p>
@@ -165,7 +191,15 @@
                 </button>
             </div>
 
-            <div data-step="comments-feature">
+            <div data-step="comments-feature"
+                 data-position-selector="article:first-of-type .comment"
+                 data-position-target="top left"
+                 data-position-step="top right"
+                 data-position-offset="10px 10px"
+                 data-scrollTo-selector="article:first-of-type .comment"
+                 data-scrollTo-offset="-150"
+                 data-focus-selector="article:first-of-type .comment"
+                 data-focus-classname="highlighted-hovered">
                 <h1>Comment on Articles</h1>
                 <h2>The news is about more than just the article</h2>
                 <p>Start a new discussion or join an existing one.</p>
@@ -176,7 +210,15 @@
                 </button>
             </div>
 
-            <div data-step="browse-comments-feature">
+            <div data-step="browse-comments-feature"
+                 data-position-selector="nav li:nth-of-type(3)"
+                 data-position-target="bottom middle"
+                 data-position-step="top left"
+                 data-position-offset="-10px -5px"
+                 data-scrollTo-selector="nav li:nth-of-type(3)"
+                 data-scrollTo-offset="-150"
+                 data-focus-selector="nav li:nth-of-type(3)"
+                 data-focus-classname="highlighted">
                 <h1>Browse Comments</h1>
                 <h2>Discovery though discussion</h2>
                 <p>News can be discovered through discourse. Read through
@@ -193,31 +235,22 @@
     </div>
 
     <script>
-        // Declare a helper function for scrolling and highlighting specific DOM elements
-        window.highlightAndScrollTo = function ($el, animationDuration) {
-            if (!animationDuration) animationDuration = 500;
-
-            // Highlight the element
-            $el.addClass('highlighted');
-
-            // Scroll the page to the element
-            $("html, body").animate({scrollTop: $el.offset().top - 150}, animationDuration);
-        }
-
+        // A globally declared callback to execute when the Onboarded scripts
+        // have finished loading asynchronously.
         window.setFlowBehaviors = function () {
             jQuery(document)
                 // Bind a click event handler to the Start Product Tour button
                 .on( 'click', '#start-product-tour', function (e) {
                     // Retrieve the already instantiated onboarded project.
                     var project = Onboarded.retrieve();
-    
+
                     // Start the Product Tour flow, skipping the
                     // API check for completed steps.
                     project.startFlow({
                         label: 'Product Tour',
                         skipApiCheck: true
                     });
-    
+
                     // Bind a click event handler to the render container
                     project.renderContainer.one( 'click', function(e) {
                         // If renderContainer element, which we've styled as an overlay,
@@ -226,87 +259,30 @@
                             project.dismissFlow();
                         }
                     });
-    
+
                 })
-    
+
                 // Reset the flow upon dismissal, so that it can be restarted.
                 .on( 'onboarded:flow:afterDismissal', function(e, flow) {
-                    $('.highlighted').removeClass('highlighted');
-                    $("html, body").animate({scrollTop: 0}, 300);
                     flow.reset();
                 })
-    
+
                 // Reset the flow after completion, so that it can be restarted.
                 .on( 'onboarded:flow:afterComplete', function(e, flow) {
-                    $('.highlighted').removeClass('highlighted');
-                    $("html, body").animate({scrollTop: 0}, 300);
                     flow.reset();
                 })
-    
+
                 // Highlight specific parts of the DOM on specific steps
                 .on( 'onboarded:step:afterStart', function(event, step) {
-                    switch ( step.label ) {
-                        case "welcome":
-                            $("html, body").animate({scrollTop: 0}, 300);
-                            break;
-    
-                        case "search-feature":
-                            var $searchInput = $('#search input[type="search"]');
-                            highlightAndScrollTo( $searchInput );
-                            $searchInput.prop('readonly', true);
-                            break;
-    
-                        case "collections-feature":
-                            $firstCollectionsButton = $('.article-actions > .heart').first();
-                            highlightAndScrollTo( $firstCollectionsButton );
-                            $firstCollectionsButton.addClass('hovered');
-                            break;
-    
-                        case "browse-collections-feature":
-                            highlightAndScrollTo( $('nav li').eq(1) );
-                            break;
-    
-                        case "comments-feature":
-                            $firstCommentsButton = $('.article-actions > .comment').first();
-                            highlightAndScrollTo( $firstCommentsButton );
-                            $firstCommentsButton.addClass('hovered');
-                            break;
-    
-                        case "browse-comments-feature":
-                            highlightAndScrollTo( $('nav li').eq(2) );
-                            break;
+                    if (step.label === 'search-feature') {
+                        $('#search input[type="search"]').prop('readonly', true);
                     }
                 })
-    
+
                 // Turn off any highlighting when a step is completed
                 .on( 'onboarded:step:afterComplete', function(event, step) {
-                    switch ( step.label ) {
-                        case "welcome":
-                            break;
-    
-                        case "search-feature":
-                            $('#search input[type="search"]')
-                                .removeClass('highlighted')
-                                .prop('readonly', false);
-                            break;
-    
-                        case "collections-feature":
-                            $('.article-actions > .heart').first()
-                                .removeClass('highlighted hovered');
-                            break;
-    
-                        case "browse-collections-feature":
-                            $('nav li').eq(1).removeClass('highlighted');
-                            break;
-    
-                        case "comments-feature":
-                            $('.article-actions > .comment').first()
-                                .removeClass('highlighted hovered');
-                            break;
-    
-                        case "browse-comments-feature":
-                            $('nav li').eq(2).removeClass('highlighted');
-                            break;
+                    if (step.label === 'search-feature') {
+                        $('#search input[type="search"]').prop('readonly', false);
                     }
                 });
         }
