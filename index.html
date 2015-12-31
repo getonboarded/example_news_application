@@ -161,7 +161,7 @@
                  data-scrollTo-selector="article:first-of-type .heart"
                  data-scrollTo-offset="-150"
                  data-focus-selector='article:first-of-type .heart'
-                 data-focus-classname="highlighted-hovered">
+                 data-focus-classname="highlighted hovered">
                 <h1>Collect Articles</h1>
                 <h2>Curate your own groups of articles</h2>
                 <p>Save your collections of articles for later reading, or share them with others</p>
@@ -199,7 +199,7 @@
                  data-scrollTo-selector="article:first-of-type .comment"
                  data-scrollTo-offset="-150"
                  data-focus-selector="article:first-of-type .comment"
-                 data-focus-classname="highlighted-hovered">
+                 data-focus-classname="highlighted hovered">
                 <h1>Comment on Articles</h1>
                 <h2>The news is about more than just the article</h2>
                 <p>Start a new discussion or join an existing one.</p>
@@ -218,7 +218,7 @@
                  data-scrollTo-selector="nav li:nth-of-type(3)"
                  data-scrollTo-offset="-150"
                  data-focus-selector="nav li:nth-of-type(3)"
-                 data-focus-classname="highlighted">
+                 data-focus-classname="highlighted hovered">
                 <h1>Browse Comments</h1>
                 <h2>Discovery though discussion</h2>
                 <p>News can be discovered through discourse. Read through
@@ -252,7 +252,7 @@
                     });
 
                     // Bind a click event handler to the render container
-                    project.renderContainer.one( 'click', function(e) {
+                    project.renderContainer.on( 'click', function(e) {
                         // If renderContainer element, which we've styled as an overlay,
                         // was the clicked target, then reset and dismiss the flow.
                         if ( e.target == $(this).contents().get(0) ) {
